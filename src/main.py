@@ -1,6 +1,6 @@
 import pygame
 import sys
-from setting import *
+from settings import *
 from level import Level
 
 

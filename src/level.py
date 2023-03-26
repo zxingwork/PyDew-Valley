@@ -1,7 +1,8 @@
 import pygame
-from setting import *
+from settings import *
 from player import Player
 from overlay import Overlay
+from typing import *
 
 
 class Level:
@@ -10,8 +11,8 @@ class Level:
         self.display_surface = pygame.display.get_surface()
 
         # sprite groups
-        self.all_sprites = pygame.sprite.Group()
-        self.player = None
+        self.all_sprites = CamaraGroup()
+        self.player: Optional[Player] = None
 
         self.setup()
 
@@ -25,3 +26,10 @@ class Level:
         self.display_surface.fill('black')
         self.all_sprites.draw(self.display_surface)
         self.all_sprites.update(dt)
+
+        self.overlay.display()
+
+
+class CamaraGroup(pygame.sprite.Group):
+    def __init__(self):
+        super().__init__()

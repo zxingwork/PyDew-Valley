@@ -1,5 +1,5 @@
 import pygame
-from setting import *
+from settings import *
 from typing import *
 from math import sqrt
 from support import *
@@ -44,7 +44,7 @@ class Player(pygame.sprite.Sprite):
 
         # timers
         self.timers = {
-            'tool use': Timer(100, self.use_tool),
+            'tool use': Timer(350, self.use_tool),
             'tool switch': Timer(200),
             'seed use': Timer(350, self.use_seed),
             'seed switch': Timer(200)
