@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__(group)
 
         # general setup
-        self.image = pygame.Surface((64, 32))
+        self.image = pygame.Surface((100, 100))
         self.image.fill('green')
         self.rect = self.image.get_rect(center=pos)
 
@@ -17,6 +17,15 @@ class Player(pygame.sprite.Sprite):
         self.direction = pygame.math.Vector2(0, 0)
         self.pos = pygame.math.Vector2(self.rect.center)
         self.speed = 200
+        self.animations = {}
+
+    def import_assets(self):
+        self.animations = {'up': [], 'down': [], 'right': [], 'left': [],
+                           'up_idle': [], 'down_idle': [], 'right_idle': [], 'left_idle': [],
+                           'up_hoe': [], 'down_hoe': [], 'right_hoe': [], 'left_hoe': [],
+                           'up_axe': [], 'down_axe': [], 'right_axe': [], 'left_axe': [],
+                           'up_water': [], 'down_water': [], 'right_water': [], 'left_water': []}
+        
 
     def input(self):
         keys = pygame.key.get_pressed()
@@ -44,12 +53,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.centerx = self.pos.x
 
         # vertical movement
-        self.pos.y = self.direction.y * self.speed * dt
+        self.pos.y += self.direction.y * self.speed * dt
         self.rect.centery = self.pos.y
-
-        print(self.direction)
-
-        # exist if self.direction is None
 
     def update(self, dt) -> None:
         self.input()
