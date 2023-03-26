@@ -1,6 +1,7 @@
 import pygame
 from setting import *
 from player import Player
+from overlay import Overlay
 
 
 class Level:
@@ -13,6 +14,8 @@ class Level:
         self.player = None
 
         self.setup()
+
+        self.overlay = Overlay(self.player)
 
     def setup(self):
         self.player = Player((100, 100), self.all_sprites)
