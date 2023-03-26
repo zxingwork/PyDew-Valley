@@ -2,11 +2,14 @@ import pygame
 from setting import *
 from typing import *
 from math import sqrt
+from support import *
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, group):
         super().__init__(group)
+
+        self.import_assets()
 
         # general setup
         self.image = pygame.Surface((100, 100))
@@ -25,7 +28,10 @@ class Player(pygame.sprite.Sprite):
                            'up_hoe': [], 'down_hoe': [], 'right_hoe': [], 'left_hoe': [],
                            'up_axe': [], 'down_axe': [], 'right_axe': [], 'left_axe': [],
                            'up_water': [], 'down_water': [], 'right_water': [], 'left_water': []}
-        
+        for animation in self.animations.keys():
+            full_path = '../graphics/character/' + animation
+            self.animations[animation] = import_folder(full_path)
+            pass
 
     def input(self):
         keys = pygame.key.get_pressed()
