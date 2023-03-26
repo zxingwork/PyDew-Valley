@@ -51,7 +51,6 @@ class Player(pygame.sprite.Sprite):
 
         # exist if self.direction is None
 
-
     def update(self, dt) -> None:
         self.input()
         self.move(dt)
